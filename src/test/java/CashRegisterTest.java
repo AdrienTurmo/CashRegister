@@ -7,12 +7,12 @@ public class CashRegisterTest {
     public void name() throws Exception {
 
         CashRegister cashRegister = new CashRegister();
-        Price price = new Price(1.20);
+        Price price = Price.valueOf(1.20);
         double quantity = 1;
 
         Price total = cashRegister.total(price,quantity);
 
-        assertThat(total.getPrice()).isEqualTo(1.20);
+        assertThat(total).isEqualTo(Price.valueOf(1.20));
     }
 
 }
