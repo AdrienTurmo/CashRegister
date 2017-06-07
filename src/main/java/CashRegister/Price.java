@@ -1,3 +1,4 @@
+package CashRegister;
 import java.util.Objects;
 
 public class Price {
@@ -11,8 +12,9 @@ public class Price {
         this.value = value;
     }
 
-    public Price multiplyBy(double quantity) {
-        return valueOf(value*quantity);
+    public Price multiplyBy(Quantity quantity) {
+        return valueOf(
+                quantity.multiplyBy(value));
     }
 
 
@@ -32,7 +34,7 @@ public class Price {
     }
     @Override
     public String toString() {
-        return "Price{" +
+        return "CashRegister.Price{" +
                 "value=" + value +
                 '}';
     }

@@ -1,4 +1,7 @@
+package CashRegister;
+
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CashRegisterTest {
@@ -8,7 +11,7 @@ public class CashRegisterTest {
 
         CashRegister cashRegister = new CashRegister();
         Price price = Price.valueOf(1.20);
-        double quantity = 1;
+        Quantity quantity = Quantity.valueOf(1);
 
         Price total = cashRegister.total(price,quantity);
 
