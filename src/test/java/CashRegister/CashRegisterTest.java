@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CashRegisterTest {
 
     @Test
-    public void name() throws Exception {
+    public void i_get_total_price_from_price_and_quantity() throws Exception {
 
         CashRegister cashRegister = new CashRegister();
         Price price = Price.valueOf(1.20);
