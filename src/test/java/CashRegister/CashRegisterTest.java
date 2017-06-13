@@ -27,7 +27,10 @@ public class CashRegisterTest {
                                             Quantity.valueOf(quantity));
         assertThat(total).isEqualTo(
                 Result.found(Price.valueOf(quantity*unitPrice)));
+
+        total.ifFound(System.out::println);
     }
+
 
     @Test
     public void total_not_found_when_item_price_is_not_found() {
@@ -36,5 +39,7 @@ public class CashRegisterTest {
                 Quantity.valueOf(1));
         assertThat(total).isEqualTo(
                 Result.notFound("PEACH"));
+
+        total.ifNotFound(System.err::println);
     }
 }
