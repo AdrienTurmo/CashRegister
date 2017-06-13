@@ -1,24 +1,24 @@
 package CashRegister;
 
-public class ItemReference {
+class ItemReference {
 
     private final Price unitPrice;
     private final String codeItem;
 
-    private ItemReference(Price unitPrice, String codeItem) {
+    ItemReference(Price unitPrice, String codeItem) {
         this.unitPrice = unitPrice;
         this.codeItem = codeItem;
     }
 
-    public boolean matchSoughtItemCode(String ItemCode) {
+    boolean matchSoughtItemCode(String ItemCode) {
         return this.codeItem.equals(ItemCode);
     }
 
-    public Price getUnitPrice() {
+    Price getUnitPrice() {
         return unitPrice;
     }
 
-    public static Builder anItemReference() {
+    static Builder anItemReference() {
         return new Builder();
     }
 
@@ -35,17 +35,17 @@ public class ItemReference {
             return this;
         }
 
-        public Builder withUnitPrice(Double unitPrice) {
+        Builder withUnitPrice(Double unitPrice) {
             this.unitPrice = Price.valueOf(unitPrice);
             return this;
         }
 
-        public Builder withCodeItem(String codeItem) {
+        Builder withCodeItem(String codeItem) {
             this.codeItem = codeItem;
             return this;
         }
 
-        public ItemReference build() {
+        ItemReference build() {
             ItemReference itemReference = new ItemReference(unitPrice, codeItem);
             return itemReference;
         }

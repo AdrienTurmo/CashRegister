@@ -4,7 +4,9 @@ public class PriceQuery {
 
     private ItemReference[] itemReferences;
 
-    public PriceQuery(ItemReference ... itemReferences) {this.itemReferences = itemReferences; }
+    PriceQuery(ItemReference... itemReferences) {
+        this.itemReferences = itemReferences;
+    }
 
     Result findPrice(String soughtItemCode) {
         for (ItemReference itemReference : itemReferences) {

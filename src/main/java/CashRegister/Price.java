@@ -9,7 +9,7 @@ public class Price {
         return new Price(value);
     }
 
-    private Price(double value) {
+    Price(double value) {
         this.value = value;
     }
 

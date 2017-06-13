@@ -1,22 +1,25 @@
 package CashRegister;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 abstract class Result {
 
-    public static Result found(Price price) {
+    static Result found(Price price) {
         return new Found(price);
     }
 
-    public static Result notFound(String invalideItemCode) {
+    static Result notFound(String invalideItemCode) {
         return new NotFound(invalideItemCode);
     }
+
+    abstract Result map(Function<Price,Price> function);
 
 
     private static class Found extends Result {
         private Price price;
 
-        public Found(Price price) {
+        Found(Price price) {
             this.price = price;
         }
 
@@ -32,12 +35,17 @@ abstract class Result {
         public int hashCode() {
             return Objects.hash(price);
         }
+
+        @Override
+        Result map(Function<Price, Price> function) {
+            return found(function.apply(price));
+        }
     }
 
     private static class NotFound extends Result {
         private String invalideItemCode;
 
-        public NotFound(String invalideItemCode) {
+        NotFound(String invalideItemCode) {
             this.invalideItemCode = invalideItemCode;
         }
 
@@ -52,6 +60,11 @@ abstract class Result {
         @Override
         public int hashCode() {
             return Objects.hash(invalideItemCode);
+        }
+
+        @Override
+        Result map(Function<Price, Price> function) {
+            return this;
         }
     }
 }
