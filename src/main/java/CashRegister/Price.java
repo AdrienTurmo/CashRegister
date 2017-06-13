@@ -1,4 +1,5 @@
 package CashRegister;
+
 import java.util.Objects;
 
 public class Price {
@@ -8,7 +9,7 @@ public class Price {
         return new Price(value);
     }
 
-    private Price(double value ) {
+    private Price(double value) {
         this.value = value;
     }
 
@@ -16,7 +17,6 @@ public class Price {
         return valueOf(
                 quantity.multiplyBy(value));
     }
-
 
 
     @Override
@@ -28,10 +28,12 @@ public class Price {
 
         return Double.compare(price1.value, value) == 0;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(value);
     }
+
     @Override
     public String toString() {
         return "CashRegister.Price{" +

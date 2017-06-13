@@ -6,12 +6,13 @@ public class PriceQuery {
 
     public PriceQuery(ItemReference ... itemReferences) {this.itemReferences = itemReferences; }
 
-    Price findPrice(String soughtItemCode) {
+    Result findPrice(String soughtItemCode) {
         for (ItemReference itemReference : itemReferences) {
             if (itemReference.matchSoughtItemCode(soughtItemCode)) {
-                return itemReference.getUnitPrice();
+                Price unitPrice = itemReference.getUnitPrice();
+                return Result.found(unitPrice);
             }
         }
-        return null;
+        return Result.notFound(soughtItemCode);
     }
 }
